@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>แปลงเวลา</title>
+  <style>
+    body {
+      font-family: 'Sarabun', sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    input, button {
+      font-size: 18px;
+      padding: 5px 10px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>แปลงรูปแบบเวลา</h1>
+
+  <label for="timeInput">กรอกเวลา (hh:mm:ss):</label><br>
+  <input type="text" id="timeInput" placeholder="เช่น 12:30:45"><br>
+  <button onclick="convertTime()">แสดงผล</button>
+
+  <div id="result"></div>
+
+  <script>
+    function convertTime() {
+      const input = document.getElementById('timeInput').value;
+      const parts = input.split(":");
+
+      if (parts.length !== 3) {
+        document.getElementById('result').textContent = "รูปแบบเวลาผิดพลาด (ควรเป็น hh:mm:ss)";
+        return;
+      }
+
+      const hh = parts[0].padStart(2, '0');
+      const mm = parts[1].padStart(2, '0');
+      const ss = parts[2].padStart(2, '0');
+
+      document.getElementById('result').textContent =
+        `${hh} นาฬิกา ${mm} นาที ${ss} วินาที`;
+    }
+  </script>
+
+</body>
+</html>

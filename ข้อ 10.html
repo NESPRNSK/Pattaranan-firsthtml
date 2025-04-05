@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>แปลงตัวเลขเป็นคำ</title>
+  <style>
+    body {
+      font-family: 'Sarabun', sans-serif;
+      padding: 50px;
+      text-align: center;
+    }
+    input, button {
+      font-size: 20px;
+      padding: 5px 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>แปลงตัวเลขเป็นคำ</h2>
+  <input type="text" id="numberInput" placeholder="ใส่ตัวเลข เช่น 1234567890">
+  <button onclick="convert()">แสดง</button>
+
+  <div id="result"></div>
+
+  <script>
+    function convert() {
+      const input = document.getElementById("numberInput").value;
+      const numberWords = {
+        '0': 'zero',
+        '1': 'one',
+        '2': 'two',
+        '3': 'three',
+        '4': 'four',
+        '5': 'five',
+        '6': 'six',
+        '7': 'seven',
+        '8': 'eight',
+        '9': 'nine' ,
+        '10': 'ten'
+      };
+
+      let words = [];
+
+      for (let char of input) {
+        if (numberWords[char] !== undefined) {
+          words.push(numberWords[char]);
+        }
+      }
+
+      const resultText = `${input} = ${words.join(',')}`;
+      document.getElementById("result").textContent = resultText;
+    }
+  </script>
+
+</body>
+</html>
